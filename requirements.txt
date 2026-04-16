@@ -1,0 +1,21 @@
+# ─────────────────────────────────────────────
+#  Hannah – AI Research Assistant
+#  Install with: pip install -r requirements.txt
+# ─────────────────────────────────────────────
+
+# LiveKit Agents 1.x core
+livekit-agents>=1.0.0
+
+# Plugins
+livekit-plugins-google>=1.0.0       # LLM (Gemini 2.5 Flash) + TTS (Gemini TTS)
+livekit-plugins-deepgram>=1.0.0     # STT (Nova-2)
+livekit-plugins-silero>=1.0.0       # VAD (local, free)
+
+# HTTP & feeds
+httpx>=0.27.0
+feedparser>=6.0.11
+python-dotenv>=1.0.0
+python-dateutil>=2.9.0
+
+# FastMCP (tool server, used standalone)
+fastmcp>=0.4.0
