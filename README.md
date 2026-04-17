@@ -13,7 +13,9 @@ locally with a LiveKit voice pipeline, Google Gemini, and Deepgram.
 
 ![Hannah UI](assets/Demo-screenshot.png)
 
-> **Video demo:** See `assets/Demo-video.mov` or upload to YouTube and link here.
+> **Video demo:** [▶ Watch Hannah in action on YouTube](https://www.youtube.com/watch?v=PkS0ffJoRtQ)
+
+[![Hannah Demo](https://img.youtube.com/vi/PkS0ffJoRtQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=PkS0ffJoRtQ)
 
 ---
 
