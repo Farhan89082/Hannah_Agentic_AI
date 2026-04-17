@@ -1,0 +1,130 @@
+<svg width="100%" viewBox="0 0 820 520" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Hannah Architecture Diagram</title>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#c0aed8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#a8c4ae" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#e8a8a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<!-- Background -->
+<rect width="820" height="520" fill="#faf7f2" rx="0"/>
+
+<!-- ── Title ── -->
+<text x="410" y="36" text-anchor="middle" font-family="Georgia, serif" font-size="17" font-weight="400" letter-spacing="3" fill="#3d3530">HANNAH  —  ARCHITECTURE</text>
+<line x1="200" y1="46" x2="620" y2="46" stroke="#e8a8a8" stroke-width="0.8"/>
+
+<!-- ══ ROW 1: User ══ -->
+<!-- User card -->
+<rect x="330" y="64" width="160" height="52" rx="12" fill="rgba(255,255,255,0.75)" stroke="#f2c4c4" stroke-width="1.2"/>
+<text x="410" y="85" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="400" fill="#3d3530">You</text>
+<text x="410" y="103" text-anchor="middle" font-family="'Helvetica Neue',sans-serif" font-size="10" fill="#9a8f8a">Voice via microphone</text>
+
+<!-- Arrow down to LiveKit -->
+<line x1="410" y1="116" x2="410" y2="144" stroke="#c0aed8" stroke-width="1.2" marker-end="url(#arr)"/>
+<text x="422" y="134" font-family="'Helvetica Neue',sans-serif" font-size="9" fill="#c0aed8">WebRTC</text>
+
+<!-- ══ ROW 2: LiveKit ══ -->
+<rect x="290" y="144" width="240" height="52" rx="12" fill="rgba(212,196,232,0.18)" stroke="#c0aed8" stroke-width="1.2"/>
+<text x="410" y="165" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#3d3530">LiveKit Room</text>
+<text x="410" y="183" text-anchor="middle" font-family="'Helvetica Neue',sans-serif" font-size="10" fill="#9a8f8a">Voice agent infrastructure</text>
+
+<!-- Arrow down to STT/LLM/TTS group -->
+<line x1="410" y1="196" x2="410" y2="224" stroke="#c0aed8" stroke-width="1.2" marker-end="url(#arr)"/>
+
+<!-- ══ ROW 3: AI Pipeline ══ -->
+<!-- STT -->
+<rect x="60" y="224" width="160" height="52" rx="12" fill="rgba(196,216,200,0.2)" stroke="#a8c4ae" stroke-width="1.2"/>
+<text x="140" y="245" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#3d3530">Deepgram Nova-2</text>
+<text x="140" y="263" text-anchor="middle" font-family="'Helvetica Neue',sans-serif" font-size="10" fill="#9a8f8a">Speech-to-text</text>
+
+<!-- LLM -->
+<rect x="290" y="224" width="240" height="52" rx="12" fill="rgba(212,196,232,0.28)" stroke="#c0aed8" stroke-width="1.5"/>
+<text x="410" y="245" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#3d3530">Google Gemini Flash-Lite</text>
+<text x="410" y="263" text-anchor="middle" font-family="'Helvetica Neue',sans-serif" font-size="10" fill="#9a8f8a">Language model  ·  tool orchestration</text>
+
+<!-- TTS -->
+<rect x="600" y="224" width="160" height="52" rx="12" fill="rgba(196,216,200,0.2)" stroke="#a8c4ae" stroke-width="1.2"/>
+<text x="680" y="245" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#3d3530">Deepgram Aura</text>
+<text x="680" y="263" text-anchor="middle" font-family="'Helvetica Neue',sans-serif" font-size="10" fill="#9a8f8a">Text-to-speech</text>
+
+<!-- STT → LLM -->
+<line x1="220" y1="250" x2="288" y2="250" stroke="#a8c4ae" stroke-width="1.2" marker-end="url(#arr2)"/>
+<!-- LLM → TTS -->
+<line x1="530" y1="250" x2="598" y2="250" stroke="#a8c4ae" stroke-width="1.2" marker-end="url(#arr2)"/>
+<!-- TTS back to LiveKit (curved) -->
+<path d="M 680 224 Q 740 180 640 170 Q 560 162 530 170" fill="none" stroke="#a8c4ae" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arr2)"/>
+
+<!-- Arrow: LLM → Tools -->
+<line x1="410" y1="276" x2="410" y2="304" stroke="#e0bc98" stroke-width="1.2" marker-end="url(#arr3)"/>
+<text x="424" y="294" font-family="'Helvetica Neue',sans-serif" font-size="9" fill="#e0bc98">tool call</text>
+
+<!-- ══ ROW 4: FastMCP ══ -->
+<rect x="290" y="304" width="240" height="52" rx="12" fill="rgba(240,212,184,0.22)" stroke="#e0bc98" stroke-width="1.2"/>
+<text x="410" y="325" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#3d3530">FastMCP Tool Server</text>
+<text x="410" y="343" text-anchor="middle" font-family="'Helvetica Neue',sans-serif" font-size="10" fill="#9a8f8a">tools.py  ·  7 domain functions</text>
+
+<!-- Arrow down to data sources -->
+<line x1="410" y1="356" x2="410" y2="380" stroke="#e0bc98" stroke-width="1.2" marker-end="url(#arr3)"/>
+
+<!-- ══ ROW 5: Data sources ══ -->
+<!-- Fan lines from 410,380 to each source -->
+<!-- PubMed -->
+<line x1="410" y1="380" x2="100" y2="396" stroke="#e0bc98" stroke-width="0.8"/>
+<rect x="24" y="396" width="152" height="44" rx="10" fill="rgba(188,212,232,0.22)" stroke="#bcd4e8" stroke-width="1"/>
+<text x="100" y="414" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#3d3530">PubMed / NCBI</text>
+<text x="100" y="430" text-anchor="middle" font-family="'Helvetica Neue',sans-serif" font-size="9" fill="#9a8f8a">Peer-reviewed literature</text>
+
+<!-- bioRxiv -->
+<line x1="410" y1="380" x2="230" y2="396" stroke="#e0bc98" stroke-width="0.8"/>
+<rect x="154" y="396" width="152" height="44" rx="10" fill="rgba(188,212,232,0.22)" stroke="#bcd4e8" stroke-width="1"/>
+<text x="230" y="414" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#3d3530">bioRxiv / medRxiv</text>
+<text x="230" y="430" text-anchor="middle" font-family="'Helvetica Neue',sans-serif" font-size="9" fill="#9a8f8a">Preprints</text>
+
+<!-- arXiv -->
+<line x1="410" y1="380" x2="410" y2="396" stroke="#e0bc98" stroke-width="0.8"/>
+<rect x="334" y="396" width="152" height="44" rx="10" fill="rgba(188,212,232,0.22)" stroke="#bcd4e8" stroke-width="1"/>
+<text x="410" y="414" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#3d3530">arXiv</text>
+<text x="410" y="430" text-anchor="middle" font-family="'Helvetica Neue',sans-serif" font-size="9" fill="#9a8f8a">AI/ML papers</text>
+
+<!-- FDA -->
+<line x1="410" y1="380" x2="590" y2="396" stroke="#e0bc98" stroke-width="0.8"/>
+<rect x="514" y="396" width="152" height="44" rx="10" fill="rgba(242,196,196,0.2)" stroke="#f2c4c4" stroke-width="1"/>
+<text x="590" y="414" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#3d3530">FDA / EMA</text>
+<text x="590" y="430" text-anchor="middle" font-family="'Helvetica Neue',sans-serif" font-size="9" fill="#9a8f8a">Regulatory updates</text>
+
+<!-- News -->
+<line x1="410" y1="380" x2="726" y2="396" stroke="#e0bc98" stroke-width="0.8"/>
+<rect x="648" y="396" width="152" height="44" rx="10" fill="rgba(242,196,196,0.2)" stroke="#f2c4c4" stroke-width="1"/>
+<text x="724" y="414" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#3d3530">Biotech News RSS</text>
+<text x="724" y="430" text-anchor="middle" font-family="'Helvetica Neue',sans-serif" font-size="9" fill="#9a8f8a">Fierce, BioPharma, Nature</text>
+
+<!-- Result arrow back up -->
+<path d="M 530 304 Q 560 270 530 250" fill="none" stroke="#e0bc98" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arr3)"/>
+<text x="556" y="280" font-family="'Helvetica Neue',sans-serif" font-size="9" fill="#e0bc98" text-anchor="middle">result</text>
+
+<!-- ══ UI box ══ -->
+<rect x="580" y="304" width="200" height="52" rx="12" fill="rgba(212,196,232,0.15)" stroke="#c0aed8" stroke-width="1" stroke-dasharray="5 3"/>
+<text x="680" y="325" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#3d3530">Hannah UI</text>
+<text x="680" y="343" text-anchor="middle" font-family="'Helvetica Neue',sans-serif" font-size="10" fill="#9a8f8a">localhost:8765  ·  live state sync</text>
+
+<!-- LLM → UI -->
+<line x1="530" y1="330" x2="578" y2="330" stroke="#c0aed8" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+
+<!-- Legend -->
+<text x="40" y="480" font-family="'Helvetica Neue',sans-serif" font-size="9" fill="#9a8f8a">Voice pipeline</text>
+<line x1="100" y1="476" x2="130" y2="476" stroke="#a8c4ae" stroke-width="1.2"/>
+<text x="140" y="480" font-family="'Helvetica Neue',sans-serif" font-size="9" fill="#9a8f8a">Tool calls</text>
+<line x1="185" y1="476" x2="215" y2="476" stroke="#e0bc98" stroke-width="1.2"/>
+<text x="225" y="480" font-family="'Helvetica Neue',sans-serif" font-size="9" fill="#9a8f8a">State sync (dashed)</text>
+<line x1="305" y1="476" x2="335" y2="476" stroke="#c0aed8" stroke-width="1" stroke-dasharray="4 3"/>
+
+<!-- Silero VAD note -->
+<text x="60" y="302" font-family="'Helvetica Neue',sans-serif" font-size="9" fill="#9a8f8a" font-style="italic">Silero VAD (local)</text>
+<text x="60" y="314" font-family="'Helvetica Neue',sans-serif" font-size="9" fill="#9a8f8a" font-style="italic">turn detection</text>
+</svg>

@@ -11,8 +11,9 @@ locally with a LiveKit voice pipeline, Google Gemini, and Deepgram.
 
 ## Demo
 
-<!-- Add your screenshot and video link here after recording -->
-![Hannah demo screenshot](assets/demo-screenshot.png)
+![Hannah UI](assets/Demo-screenshot.png)
+
+> **Video demo:** See `assets/Demo-video.mov` or upload to YouTube and link here.
 
 ---
 
@@ -154,29 +155,18 @@ All data sources are free. No paid subscriptions are required.
 
 ## Architecture
 
-```
-Your voice (microphone)
-        │
-        ▼
-  LiveKit room (WebRTC)
-        │
-        ▼ Deepgram Nova-2 (STT)
-  Google Gemini Flash-Lite (LLM) ──── tool call ────▶  FastMCP tool server
-        │                                                       │
-        │                               ┌───────────────────────┤
-        │                               ▼           ▼           ▼
-        │                           PubMed      bioRxiv      arXiv
-        │                           FDA API     EMA RSS   News RSS feeds
-        │                               └───────────────────────┘
-        │                                               │
-        ◀──────────────── tool result ─────────────────┘
-        │
-        ▼ Deepgram Aura TTS
-  Hannah speaks the answer
-        │
-        ▼
-  hannah_ui.html (pastel visual interface, auto-opens at localhost:8765)
-```
+![Hannah architecture diagram](assets/architecture.svg)
+
+The pipeline works as follows. Your voice is captured via microphone and
+streamed through a LiveKit room over WebRTC. Deepgram Nova-2 transcribes the
+audio to text, which is sent to Google Gemini Flash-Lite. When Gemini
+determines a data lookup is needed, it calls the FastMCP tool server, which
+routes the query to the appropriate source — PubMed, bioRxiv, arXiv, FDA,
+EMA, or biotech news RSS feeds. The results return to Gemini, which
+synthesises a spoken response. Deepgram Aura converts that text back to
+audio, which LiveKit streams to your speakers. A lightweight HTTP server
+running alongside the agent pushes live state to `hannah_ui.html`, keeping
+the visual interface in sync throughout.
 
 ---
 
